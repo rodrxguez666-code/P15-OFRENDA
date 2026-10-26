@@ -1,3 +1,4 @@
+/* ===== ESTILO GENERAL ===== */
 * {
     margin: 0;
     padding: 0;
@@ -5,192 +6,365 @@
     scroll-behavior: smooth;
 }
 
-body {
-    background: #100b18;
-    color: #f5edff;
-    font-family: Arial, sans-serif;
-    line-height: 1.7;
+:root {
+    --negro: #100910;
+    --morado: #25102e;
+    --naranja: #ff791f;
+    --amarillo: #ffbd32;
+    --blanco: #fff3e8;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    color: var(--blanco);
+    line-height: 1.8;
+    background:
+        radial-gradient(ellipse at top, #35133c, transparent 65%),
+        #100910;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===== MÁRGENES DE CALAVERAS Y FLORES ===== */
+body::before,
+body::after {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 20;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    writing-mode: vertical-rl;
+    font-size: 25px;
+    line-height: 1.8;
+    opacity: 0.9;
+    text-shadow: 0 0 12px #ff791f;
+    background: linear-gradient(
+        to bottom,
+        #190c20,
+        #391532,
+        #190c20
+    );
+    border-color: #ff791f;
+    border-style: solid;
+}
+
+body::before {
+    content: "🌼 💀 🌼 🏵️ 💀 🌼 💀 🌼";
+    left: 0;
+    border-width: 0 2px 0 0;
+}
+
+body::after {
+    content: "💀 🌼 💀 🌼 🏵️ 🌼 💀 🌼";
+    right: 0;
+    border-width: 0 0 0 2px;
+}
+
+/* ===== PORTADA ===== */
 header {
     text-align: center;
-    padding: 50px 20px;
-    background: linear-gradient(135deg, #35123e, #100b18);
-    border-bottom: 3px solid #ff812e;
+    padding: 60px 70px 45px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 9, 16, 0.93),
+            rgba(66, 20, 61, 0.82)
+        );
+    border-bottom: 4px solid var(--naranja);
+    box-shadow: 0 8px 35px #000;
 }
 
 header h1 {
-    font-size: 45px;
-    letter-spacing: 3px;
+    font-size: clamp(32px, 6vw, 60px);
+    line-height: 1.3;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px #ff791f66;
 }
 
 header h1 span {
-    color: #ff812e;
+    color: var(--naranja);
 }
 
 header p {
-    color: #d3c5df;
-    margin-bottom: 20px;
+    color: #ead0e8;
+    margin: 12px 0 20px;
 }
 
+/* Espacio para la imagen de portada */
 .imagen-portada {
     max-width: 850px;
-    height: 220px;
-    margin: 20px auto;
-    border: 2px dashed #ff812e;
-    border-radius: 12px;
+    height: 230px;
+    margin: 25px auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffb15c;
-    background: #1c1427;
+    color: var(--amarillo);
+    background: #1b0e21;
+    border: 2px dashed var(--naranja);
+    border-radius: 15px;
+    box-shadow: 0 0 25px #ff791f22;
 }
 
+/* ===== BOTÓN ===== */
+.boton {
+    display: inline-block;
+    background: var(--naranja);
+    color: #1b0d17;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px #ff791f55;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background: var(--amarillo);
+    transform: scale(1.06);
+    box-shadow: 0 0 25px #ffbd3288;
+}
+
+/* ===== MENÚ ===== */
 nav {
-    background: #1c1228;
-    padding: 15px;
+    background: #1a0d20;
+    padding: 16px 45px;
     text-align: center;
+    border-bottom: 2px solid #71334f;
+    box-shadow: 0 5px 20px #0008;
     position: sticky;
     top: 0;
     z-index: 10;
-    border-bottom: 1px solid #493050;
 }
 
 nav a {
-    color: white;
+    color: var(--blanco);
     text-decoration: none;
     margin: 5px 10px;
     display: inline-block;
-    font-weight: bold;
     font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #ff812e;
+    color: var(--amarillo);
+    text-shadow: 0 0 12px var(--naranja);
 }
 
+/* ===== SECCIONES ===== */
 section {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 28px;
-    background: #1c1427;
-    border: 1px solid #493050;
-    border-radius: 12px;
-    scroll-margin-top: 90px;
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 30px;
+    position: relative;
+    scroll-margin-top: 85px;
+    background:
+        linear-gradient(145deg, #28132e, #180e20);
+    border: 1px solid #77354f;
+    border-radius: 15px;
+    box-shadow:
+        0 10px 30px #0007,
+        inset 0 0 20px #ff791f08;
+    transition: 0.3s;
+}
+
+/* Esquinas decorativas */
+section::before {
+    content: "🌼";
+    position: absolute;
+    top: -19px;
+    left: 15px;
+    font-size: 27px;
+    filter: drop-shadow(0 0 6px #ff791f);
+}
+
+section::after {
+    content: "💀";
+    position: absolute;
+    bottom: -18px;
+    right: 15px;
+    font-size: 25px;
+    filter: drop-shadow(0 0 6px #ff791f);
+}
+
+section:hover {
+    border-color: var(--naranja);
+    box-shadow: 0 10px 35px #ff791f20;
 }
 
 h2 {
-    color: #ff963e;
-    margin-bottom: 18px;
-    font-size: 29px;
+    color: var(--amarillo);
+    font-size: clamp(23px, 4vw, 32px);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff791f66;
+}
+
+h2::before {
+    content: "✿ ";
+    color: var(--naranja);
 }
 
 h3 {
-    color: #d28aff;
+    color: #ff9d51;
     margin: 10px 0;
 }
 
 p {
     margin-bottom: 15px;
+    color: #eadce9;
 }
 
+/* ===== ESPACIOS PARA TUS IMÁGENES ===== */
 .espacio-imagen {
+    min-height: 190px;
     width: 100%;
-    min-height: 180px;
-    padding: 15px;
-    margin: 15px 0;
-    border: 2px dashed #a855f7;
-    border-radius: 8px;
-    background: #160f21;
+    margin: 20px 0;
+    padding: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #c6a5df;
+    color: #ffc86d;
+    background:
+        linear-gradient(135deg, #211128, #351635);
+    border: 2px dashed #d66a36;
+    border-radius: 12px;
+    transition: 0.3s;
 }
 
+.espacio-imagen:hover {
+    background: #351635;
+    border-color: var(--amarillo);
+}
+
+/* Cuando agregues imágenes reales */
+section img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    display: block;
+    margin: 20px 0;
+    border-radius: 12px;
+    border: 2px solid #7b3b50;
+    box-shadow: 0 5px 20px #0008;
+}
+
+/* ===== TARJETAS ===== */
 .tarjetas {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    gap: 20px;
     margin: 25px 0;
 }
 
 .tarjeta {
-    padding: 18px;
-    background: #291b38;
-    border: 1px solid #493050;
-    border-radius: 10px;
+    background: linear-gradient(145deg, #351b3c, #1d1025);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #6e3551;
     transition: 0.3s;
 }
 
 .tarjeta:hover {
-    transform: translateY(-5px);
-    border-color: #ff812e;
+    transform: translateY(-6px);
+    border-color: var(--naranja);
+    box-shadow: 0 8px 22px #ff791f22;
 }
 
 .tarjeta p {
     margin-bottom: 0;
 }
 
+/* ===== RECUADROS INFORMATIVOS ===== */
 .nota {
+    padding: 22px;
     margin-top: 25px;
-    padding: 20px;
-    background: #291b38;
-    border-left: 4px solid #ff812e;
-    border-radius: 5px;
+    background: #211329;
+    border-left: 5px solid var(--naranja);
+    border-radius: 0 12px 12px 0;
+    box-shadow: inset 0 0 20px #ff791f08;
 }
 
+.nota h3 {
+    color: var(--amarillo);
+}
+
+/* ===== HIPERVÍNCULOS ===== */
 section a,
 footer a {
-    color: #ffb15c;
+    color: var(--amarillo);
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 section a:hover,
 footer a:hover {
     color: white;
+    text-shadow: 0 0 10px var(--naranja);
 }
 
-.boton {
-    display: inline-block;
-    padding: 12px 22px;
-    color: #160c18;
-    background: #ff812e;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.boton:hover {
-    background: #ffc45c;
-}
-
+/* ===== PIE DE PÁGINA ===== */
 footer {
+    position: relative;
     text-align: center;
-    padding: 35px 15px;
-    background: #09060e;
-    border-top: 2px solid #ff812e;
+    padding: 45px 65px;
+    background: #0b070e;
+    border-top: 3px solid var(--naranja);
+    box-shadow: 0 -5px 25px #0008;
 }
 
 footer h2 {
-    color: #ff812e;
+    color: var(--naranja);
+    border: none;
+}
+
+footer h2::before {
+    content: "💀 ";
 }
 
 footer p {
-    color: #c6bdcf;
+    color: #cbb6cf;
 }
 
 footer a {
-    text-decoration: none;
+    display: inline-block;
+    padding: 9px 20px;
+    border: 1px solid var(--naranja);
+    border-radius: 20px;
 }
 
-@media (max-width: 650px) {
+/* ===== DISEÑO PARA CELULARES ===== */
+@media (max-width: 750px) {
+    body::before,
+    body::after {
+        width: 18px;
+        font-size: 12px;
+        line-height: 2;
+        overflow: hidden;
+    }
+
+    header {
+        padding: 40px 28px;
+    }
+
     header h1 {
-        font-size: 32px;
+        letter-spacing: 1px;
+    }
+
+    .imagen-portada {
+        height: 170px;
     }
 
     nav {
-        position: static;
+        position: relative;
+        padding: 12px 20px;
     }
 
     nav a {
@@ -199,19 +373,19 @@ footer a {
     }
 
     section {
-        margin: 18px 12px;
-        padding: 20px;
-    }
-
-    h2 {
-        font-size: 24px;
+        margin: 28px 25px;
+        padding: 22px 18px;
     }
 
     .tarjetas {
         grid-template-columns: 1fr;
     }
 
-    .imagen-portada {
-        height: 170px;
+    section img {
+        max-height: 250px;
+    }
+
+    footer {
+        padding: 35px 28px;
     }
 }
